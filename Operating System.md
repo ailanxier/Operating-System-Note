@@ -224,9 +224,9 @@ $$
 
   > 注意选择题中「执行」和「发生」的区别。
   >
-  > <div align="center"><img src="./Operating System.assets/image-20211210220654769.png" alt="image-20211210220654769" style="zoom:100%;" />
+  > <div align="center"><img src="./Operating System.assets/image-20211210220654769.png" alt="image-20211210220654769" style="zoom:100%;"/></div>
   >
-  > <div align="center"><img src="./Operating System.assets/image-20211210224855348.png"/>
+  > <div align="center"><img src="./Operating System.assets/image-20211210224855348.png"/></div>
 
 + 操作系统的内核的内容：
 
@@ -242,7 +242,7 @@ $$
     >
     > - 在批处理系统中通过时钟管理来衡量一个作业的运行程度。
     >
-    >   <div align="center"><img src="./Operating System.assets/image-20211210232945020.png"/>
+    >   <div align="center"><img src="./Operating System.assets/image-20211210232945020.png"/></div>
 
   + **中断机制**：
 
@@ -335,13 +335,13 @@ $$
   
     ​	中断服务程序的**最后一条指令通常是一条中断返回指令**，使其返回到原程序的**断点**处，以便继续执行原程序。
   
-  <div align="center"><img src="./Operating System.assets/image-20210914134821154.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20210914134821154.png"/></div>
   
   >​	易错点：
   >
   >​		由**硬件**自动保存被中断程序的断点（即程序计数器 PC）。
   >
-  ><div align="center"><img src="./Operating System.assets/image-20211210233357503.png"/>
+  ><div align="center"><img src="./Operating System.assets/image-20211210233357503.png"/></div>
   
   ​	
 
@@ -402,7 +402,7 @@ $$
 + 微内核结构有效地分离了内核与服务、服务与服务，使得它们之间的接口更加清晰，维护的代价大大降低，各部分可以独立地优化和演进，从而保证了操作系统的**可靠性**。
 + 微内核结构的最大问题是**性能问题**，因为需要频繁地在核心态和用户态之间进行切换，操作系统的执行开销偏大。
 
-<div align="center"><img src="./Operating System.assets/image-20210914200748917.png" alt="image-20210914200748917" style="zoom:100%;" />
+<div align="center"><img src="./Operating System.assets/image-20210914200748917.png" alt="image-20210914200748917" style="zoom:100%;"/></div>
 
 ## 2.进程管理
 
@@ -509,7 +509,7 @@ $$
     > + A 和 B 是**并发**执行的，A 和 C 也是并发执行的（如果两个逻辑流在**宏观时间上有重叠**，则称这两个进程是并发的）。
     > + B 和 C 是**顺序**执行的。
     >
-    > <div align="center"><img src="./Operating System.assets/image-20210923133153304.png" alt="image-20210923133153304" style="zoom:100%;" />
+    > <div align="center"><img src="./Operating System.assets/image-20210923133153304.png" alt="image-20210923133153304" style="zoom:100%;"/></div>
 
 + 私有地址空间：
 
@@ -519,7 +519,7 @@ $$
 
   + 尽管和每个私有地址空间相关联的内存的内容一般是不同的，但是每个这样的空间都有相同的通用结构。
 
-    <div align="center"><img src="./Operating System.assets/image-20210923134902422.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20210923134902422.png"/></div>
   
 + 上下文切换：
 
@@ -600,7 +600,7 @@ $$
     
     + 为进程分配资源，为新进程的**程序和数据及用户栈分配必要的内存空间**（在 PCB 中体现）。
     
-      > 注意，若资源不足（如内存空间），则并不是创建失败，而是处于阻塞态，等待内存资源。
+      > 若资源不足（如内存空间），则并不是创建失败，而是处于阻塞态，等待内存资源。
     
     + 初始化 PCB，主要包括初始化**标志信息**、**处理机状态与控制信息**，以及设置**进程的优先级**等。
     
@@ -622,9 +622,9 @@ $$
   
 + 进程的阻塞和唤醒：
 
-  + 正在执行的进程，由于期待的某些事件未发生，如**请求系统资源失败**、**等待某种操作的完成**、新数据尚未到达或无新工作可做等，由系统自动执行阻塞原语（Block），使自己由运行态变为阻塞态。
+  + 正在执行的进程，由于期待的某些事件未发生，如**请求系统资源失败**、**等待某种操作的完成**、新数据尚未到达或无新工作可做等，由系统自动执行阻塞原语（Block），使自己由运行态变为**阻塞态**。
 
-    > 可见，**进程的阻塞是进程自身的一种主动行为**，也因此**只有处于运行态的进程**（获得 CPU），才可能将其转为阻塞态。
+    > 进程的阻塞是进程自身的一种**主动行为**，也因此只有处于**运行态**的进程（获得 CPU），才可能将其转为阻塞态。
 
   + 阻塞原语的执行过程如下：
     + 找到将要被阻塞进程的标识号对应的 PCB。
@@ -633,7 +633,7 @@ $$
 
     + 把该 PCB 插入相应事件的等待队列，将处理机资源调度给其他就绪进程。
 
-      > 当被阻塞进程所期待的事件出现时，如它所启动的 I/O 操作已完成或其所期待的数据已到达，由**有关进程**（比如，释放该 I/O 设备的进程，或提供数据的进程）调用唤醒原语（Wakeup），将等待该事件的进程唤醒。
+      > 当被阻塞进程所期待的事件出现时，如它所启动的 I/O 操作已完成或其所期待的数据已到达，由**有关进程**（比如，释放该 I/O 设备的进程，或提供数据的进程）调用**唤醒原语**（Wakeup），将等待该事件的进程唤醒。
       >
       > 唤醒原语的执行过程如下：
       >
@@ -712,7 +712,7 @@ $$
 
     其进程图为：
 
-    <div align="center"><img src="./Operating System.assets/image-20210923190042191.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20210923190042191.png"/></div>
 
 + 进程回收：
 
@@ -1312,7 +1312,7 @@ $$
 
   + 允许进程在队列之间移动，根据不同 CPU 执行的特点来区分进程。如果进程使用过多的 CPU 时间，那么它会被移到更低的优先级队列。这种方案将 **I/O 密集型和交互进程放在更高优先级队列**上。此外，在较低优先级队列中等待过长的进程会被移到更高优先级队列（老化）。
 
-  + <div align="center"><img src="./Operating System.assets/image-20211012132640554.png"/>
+  + <div align="center"><img src="./Operating System.assets/image-20211012132640554.png"/></div>
 
     + 最先执行队列 $0$ 的任务，队列 $0$ 为**空**时才执行队列 $1$，依此类推。
 
@@ -1735,7 +1735,7 @@ $$
 
       > 不安全区和与它交界的状态相毗邻，但**并不包括这些状态**。例如，状态 $\left(H_{1}, H_{2}\right)$ 和 $\left(S_{1}, U_{2}\right)$ 毗邻不安全区，但是它们并不是不安全区的一部分。绕开不安全区的轨迹线叫做安全轨迹线，接触到任何不安全区的轨迹线就叫做不安全轨迹线。
       >
-      > <div align="center"><img src="./Operating System.assets/image-20210921211420273.png" alt="image-20210921211420273" />
+      > <div align="center"><img src="./Operating System.assets/image-20210921211420273.png" alt="image-20210921211420273"/></div>
 
 + 同步机制：
 
@@ -1813,7 +1813,7 @@ $$
 
     > 利用信号量不变性：一个正确初始化的信号量不会出现负值，而出现负值的点在不安全区里面。
     >
-    > <div align="center"><img src="./Operating System.assets/image-20210921221906980.png" alt="image-20210921221906980"  />
+    > <div align="center"><img src="./Operating System.assets/image-20210921221906980.png" alt="image-20210921221906980"/></div>
 
   + 以这种方式来保护共享变量的信号量叫做**二元信号量**, 因为它的值总是 $0$ 或者 $1$。
 
@@ -1999,7 +1999,7 @@ $$
 
     + 每一个工作者线程反复地从共享缓冲区中**取出**描述符，为客户端服务，然后**等待**下一个描述符。
 
-  <div align="center"><img src="./Operating System.assets/image-20210922105410600.png" alt="image-20210922105410600"" />
+  <div align="center"><img src="./Operating System.assets/image-20210922105410600.png" alt="image-20210922105410600""/></div>
 
   + 实现：
     + 在初始化了缓冲区 sbuf 后，主线程创建了**一组工作者线程**。
@@ -2024,7 +2024,7 @@ $$
 
   > 换句话说，程序死锁是因为每个线程都在等待其他线程执行一个根本不可能发生的 V 操作。
 
-  <div align="center"><img src="./Operating System.assets/image-20210927150402535.png" alt="image-20210927150402535"  />
+  <div align="center"><img src="./Operating System.assets/image-20210927150402535.png" alt="image-20210927150402535"/></div>
 
 + 资源分配图：
 
@@ -2052,7 +2052,7 @@ $$
 
   + 有环是有死锁的必要条件：
 
-    <div align="center"><img src="./Operating System.assets/image-20210927152310670.png" alt="image-20210927152310670"  />
+    <div align="center"><img src="./Operating System.assets/image-20210927152310670.png" alt="image-20210927152310670"/></div>
 
     右图因为进程 $P_2$ 可能释放资源类型 $R_1$ 的实例。这个资源可分配给进程 $P_1$，从而打破环。
 
@@ -2375,7 +2375,7 @@ $$
 
   + 例外：
 
-    <div align="center"><img src="./Operating System.assets/image-20210922143820526.png" alt="image-20210922143820526" " />
+    <div align="center"><img src="./Operating System.assets/image-20210922143820526.png" alt="image-20210922143820526" "/></div>
 
   + 调用这些线程不安全的函数，可以采用加锁复制的方法，缺点有：
 
@@ -2480,7 +2480,7 @@ $$
   + 每个**逻辑地址值必须小于界地址寄存器**。
   + 内存管理机构动态地将逻辑地址与界地址寄存器进行**比较**，若**未发生地址越界**，则加上重定位寄存器的值后映射成物理地址，再送交内存单元。
 
-  <div align="center"><img src="./Operating System.assets/image-20211013235611684.png" alt="image-20211013235611684" style="zoom:80%;" />
+  <div align="center"><img src="./Operating System.assets/image-20211013235611684.png" alt="image-20211013235611684" style="zoom:80%;"/></div>
 
 
 
@@ -2554,7 +2554,7 @@ $$
     
   + 克服外部碎片可以通过紧凑（合并空闲分区）技术来解决，即操作系统不时地对进程进行移动和整理。但这需要**动态重定位寄存器**的支持，且相对费时。
 
-<div align="center"><img src="./Operating System.assets/image-20211202113528076.png"/>
+<div align="center"><img src="./Operating System.assets/image-20211202113528076.png"/></div>
 
 ### 4.3.非连续分配管理方式
 
@@ -2566,7 +2566,7 @@ $$
 
 + 创建进程（分别载入各个段）时，建立**进程段表**，用于实现从逻辑段到物理内存区的映射：
 
-  <div align="center"><img src="./Operating System.assets/image-20211014190118300.png" alt="image-20211014190118300" style="zoom:80%;" />
+  <div align="center"><img src="./Operating System.assets/image-20211014190118300.png" alt="image-20211014190118300" style="zoom:80%;"/></div>
 
   每个进程有自己的进程段表，有多个基址。
 
@@ -2627,7 +2627,7 @@ $$
 
       + 页表项结构（PTE）图（上面说的第二部分就是物理页号）：
 
-        <div align="center"><img src="./Operating System.assets/image-20211018155121060.png"/>
+        <div align="center"><img src="./Operating System.assets/image-20211018155121060.png"/></div>
 
     + 页表长度是指一个页表中一共有多少页，页表项长度是指页地址占多大的存储空间。
 
@@ -2662,7 +2662,7 @@ $$
 
   + 本质上就是在**原有页表结构上再加上一层页表**，顶级页表只有 $1$ 个页面。
 
-    <div align="center"><img src="./Operating System.assets/image-20211018160636257.png" alt="image-20211018160636257" style="zoom:100%;" />
+    <div align="center"><img src="./Operating System.assets/image-20211018160636257.png" alt="image-20211018160636257" style="zoom:100%;"/></div>
 
   + 一个页表的在内存中占 $4~\mathrm {KB}$，且页面大小也是 $4~\mathrm {KB}$，所以一个页（内存中的块）能放下一个页表。
 
@@ -2732,7 +2732,7 @@ $$
 
 + 结构图：
 
-  <div align="center"><img src="./Operating System.assets/image-20211019100254533.png" alt="image-20211019100254533" style="zoom:80%;" />
+  <div align="center"><img src="./Operating System.assets/image-20211019100254533.png" alt="image-20211019100254533" style="zoom:80%;"/></div>
 
 + 系统为**每个进程**建立一张**段表**，每个分段有一张**页表**。此外，系统中还应有一个段表寄存器，指出作业的段表始址和段表长度。
 
@@ -2742,7 +2742,7 @@ $$
 
 + 地址翻译过程：
 
-  <div align="center"><img src="./Operating System.assets/image-20211019100841669.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211019100841669.png"/></div>
 
 + 在进行地址翻译时，首先通过段表查到**页表基址**，然后通过页表找到页帧号，最后形成物理地址，进行一次访问实际需要**三次**访问主存，可通过 TLB 加速。
 
@@ -2772,7 +2772,7 @@ $$
 
   + 若 $TI = 0$（**段寄存器**的一个标志位）：
 
-    <div align="center"><img src="./Operating System.assets/image-20211020114648595.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211020114648595.png"/></div>
 
     + 先从 GDTR 寄存器中获得 GDT 基址。
     + 然后在 GDT 中以段选择器（段寄存器）高 $13$ 位位置索引值得到段描述符。
@@ -2782,7 +2782,7 @@ $$
 
   + 若 $TI = 1$：
 
-    <div align="center"><img src="./Operating System.assets/image-20211020114714397.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211020114714397.png"/></div>
 
     + 还是先从 GDTR 寄存器中获得 GDT 基址（找 LDT）。
     + 从 LDTR 寄存器中获取 LDT 所在段的位置索引（LDTR 高 $13$ 位），以这个位置索引在 GDT 中得到 LDT 段描述符从而得到 LDT 段基址。
@@ -2795,7 +2795,7 @@ $$
 
   ​	所有进程共享 $4\rm ~G$ 的线性地址空间，段基址可以重叠，只需要页表不同（CR3 寄存器指向当前进程的页目录）。
 
-  <div align="center"><img src="./Operating System.assets/page.png"/>
+  <div align="center"><img src="./Operating System.assets/page.png"/></div>
 
 ### 4.4.虚拟内存
 
@@ -2861,7 +2861,7 @@ $$
   + 请求分页系统在一个作业运行之前，**不要求一次性全部**调入内存，因此在作业的运行过程中，可能出现要访问的页面**不在内存**中（但是在页表中）的情况。
   + 为了支持换入换出功能，要修改页表项的结构，新增一些字段：
 
-  <div align="center"><img src="./Operating System.assets/image-20211205124215996.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211205124215996.png"/></div>
 
 + 缺页中断机构：
 
@@ -2875,7 +2875,7 @@ $$
 
 + 地址变换机构：
 
-  <div align="center"><img src="./Operating System.assets/image-20211205131752959.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211205131752959.png"/></div>
 
 #### 4.4.3.页面置换（淘汰）算法
 
@@ -2886,7 +2886,7 @@ $$
   + 基于队列实现的置换算法可能发生 Belady 异常，而基于堆栈实现的置换算法不会发生 Belady 异常。
 + 算法表格如下：
 
-<div align="center"><img src="./Operating System.assets/table1.png"/>
+<div align="center"><img src="./Operating System.assets/table1.png"/></div>
 
 #### 4.4.4.其他相关概念
 
@@ -2977,7 +2977,7 @@ $$
 
     > 例如，某进程对页面的访问次序如下：
     >
-    > <div align="center"><img src="./Operating System.assets/image-20211205202735623.png"/>
+    > <div align="center"><img src="./Operating System.assets/image-20211205202735623.png"/></div>
     >
     > 假设系统为该进程设定的工作集窗口大小 $\Delta$ 为 $5$。在 $t_{1}$ 时刻，进程的工作集为 $\{2,3,5\}$。在 $t_{2}$ 时刻，进程的工作集为 $\{1,2,3,4\}$。
 
@@ -3000,7 +3000,7 @@ $$
 
 + Core i7 地址翻译的概况图：
 
-<div align="center"><img src="./Operating System.assets/4.png"/>
+<div align="center"><img src="./Operating System.assets/4.png"/></div>
 
 + 无 TLB 的地址翻译（命中）流程：
 
@@ -3016,13 +3016,13 @@ $$
 
      > 需要访问两次（及以上）高速缓存/主存。
 
-  <div align="center"><img src="./Operating System.assets/image-20211206130519133.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211206130519133.png"/></div>
 
 + TLB 的结构：
 
   + 在虚拟页号上的划分：
 
-    <div align="center"><img src="./Operating System.assets/image-20211206125414501.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211206125414501.png"/></div>
 
   + 翻译流程（TLB 命中情况）：
 
@@ -3036,7 +3036,7 @@ $$
 
        > 只需访问一次高速缓存/主存。
 
-       <div align="center"><img src="./Operating System.assets/image-20211206130105103.png"/>
+       <div align="center"><img src="./Operating System.assets/image-20211206130105103.png"/></div>
 
   + 当 TLB 不命中时，MMU 必须从高速缓存/主存中取出相应的 PTE。新取出的 PTE 存放在 TLB 中，可能会覆盖一个已经存在的条目。
 
@@ -3059,7 +3059,7 @@ $$
     
     > 用中间位作组索引的原因：
     >
-    > <div align="center"><img src="./Operating System.assets/image-20211206133823597.png"/>
+    > <div align="center"><img src="./Operating System.assets/image-20211206133823597.png"/></div>
     >
     > 因为**相邻**的内存块（**低位不同而高位相同**）如果可以放在高速缓存**不同的组**，就不容易发生替换，即尽可能同时放入高速缓存。
     
@@ -3076,13 +3076,13 @@ $$
 
 + Linux 为**每个进程**维护了一个单独的虚拟地址空间，如下图。
 
-  <div align="center"><img src="./Operating System.assets/image-20211206191650681.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211206191650681.png"/></div>
 
 + 内核虚拟内存包含内核中的代码和数据结构，其中某些区域被映射到**所有进程共享**的物理页面。
 
 + 内核为系统中的每个进程维护一个单独的**任务结构**（源代码中的 `task_struct`），如下图。
 
-  <div align="center"><img src="./Operating System.assets/image-20211206192040636.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211206192040636.png"/></div>
 
 + 任务结构中的元素包含或者指向**内核运行该进程**所需要的所有信息（例如PID、指向用户栈的指针、可执行目标文件的名字以及程序计数器）。
 
@@ -3160,7 +3160,7 @@ $$
 
     > 假设进程 $1$ 将一个**共享对象**映射到它的虚拟内存的一个区域中，如图所示。现在假设进程 $2$ 将同一个共享对象映射到它的地址空间（并**不一定**要和进程 $1$ 在**相同的虚拟地址**处）。
     >
-    > <div align="center"><img src="./Operating System.assets/image-20211206204751788.png"/>
+    > <div align="center"><img src="./Operating System.assets/image-20211206204751788.png"/></div>
 
 + 写时复制：
 
@@ -3181,7 +3181,7 @@ $$
 
     > 通过延迟私有对象中的副本直到最后可能的时刻，写时复制最充分地使用了稀有的物理内存。
 
-    <div align="center"><img src="./Operating System.assets/image-20211206210446323.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211206210446323.png"/></div>
 
 + 内存映射的四种类型：
 
@@ -3237,7 +3237,7 @@ $$
 
       ​	如果 `a.out` 程序与共享对象（或目标）链接，比如标准 C 库 `libc.so`，那么这些对象都是动态链接到这个程序的，然后再映射到用户虚拟地址空间中的共享区域内。
 
-      <div align="center"><img src="./Operating System.assets/image-20211206214228820.png"/>
+      <div align="center"><img src="./Operating System.assets/image-20211206214228820.png"/></div>
 
     + 设置程序计数器（PC）：
 
@@ -3266,7 +3266,7 @@ $$
 
   ​	思想是允许 I/O 设备**主动打断 CPU** 的运行并请求服务，从而 CPU 不用等待，使得其向 I/O 控制器发送读命令后可以继续做其他有用的工作。
 
-  <div align="center"><img src="./Operating System.assets/image-20211206221411112.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211206221411112.png"/></div>
 
   > 虽然 CPU 不用等待设备读完，但是数据中的每个字在**磁盘缓存与 I/O 控制器**之间的传输都必须经过 CPU。
   >
@@ -3401,7 +3401,7 @@ $$
     >
     > + 为了实现双向数据传输，必须在两台机器中都设置**两个缓冲区**，一个用作**发送缓冲区**，另一个用作**接收缓冲区**。
     >
-    >   <div align="center"><img src="./Operating System.assets/image-20211207111349709.png"/>
+    >   <div align="center"><img src="./Operating System.assets/image-20211207111349709.png"/></div>
 
   + 循环缓冲：
 
@@ -3566,7 +3566,7 @@ $$
 
   + 不存在饥饿，但是会导致**延迟不均**，不利于远离磁头一端的访问请求。
 
-    <div align="center"><img src="./Operating System.assets/image-20211207141045588.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211207141045588.png"/></div>
 
 + C-SCAN 循环扫描/电梯算法磁盘调度：
 
@@ -3574,7 +3574,7 @@ $$
 
   + **两端请求**都能很快处理，解决 SCAN 算法对两端磁道请求的不公平的问题。
 
-    <div align="center"><img src="./Operating System.assets/image-20211207141105692.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211207141105692.png"/></div>
 
 + C-LOOK 磁盘调度：
 
@@ -3582,7 +3582,7 @@ $$
 
   + 更加合理，综合了以上的优点。
 
-    <div align="center"><img src="./Operating System.assets/image-20211207141800618.png"/>
+    <div align="center"><img src="./Operating System.assets/image-20211207141800618.png"/></div>
 
 #### 5.4.3.磁盘管理
 
@@ -3617,7 +3617,7 @@ $$
 
     + [维基百科为证](https://en.wikipedia.org/wiki/Logical_block_addressing)：
 
-      <div align="center"><img src="./Operating System.assets/image-20211207151622177.png"/>
+      <div align="center"><img src="./Operating System.assets/image-20211207151622177.png"/></div>
 
 + 磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取**一定扇区长度**的数据放入内存。
 
@@ -3796,7 +3796,7 @@ $$
 
       > 作业有出，感觉会考，下面是《王道》中一个使用混合索引的例子：
       >
-      > <div align="center"><img src="./Operating System.assets/image-20211207214656200.png"/>
+      > <div align="center"><img src="./Operating System.assets/image-20211207214656200.png"/></div>
       >
       > + 直接地址：
       >   + 为了提高对文件的检索速度，在索引结点中可设置 $10$ 个直接地址项，这里每项中所存放的是该文件数据所在盘块的盘块号。
@@ -3811,7 +3811,7 @@ $$
       >   + 在采用二次间接地址方式时，文件的最大长度可达 $4\rm~GB$。
       >   + 同理，三次间接地址允许的文件最大长度可达 $4\rm~TB$。
 
-  <div align="center"><img src="./Operating System.assets/image-20211207211730809.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211207211730809.png"/></div>
 
 ### 6.2.目录结构
 
@@ -3821,7 +3821,7 @@ $$
 
 + 有的系统（如 UNIX，以及实验要用的 Ext2）采用了**文件名和文件描述信息**分离的方法，文件描述信息单独形成一个称为**索引结点**的数据结构，简称 i 结点。在文件目录中的每个**目录项**仅由文件名和**指向该文件所对应的 i 结点的指针**构成。
 
-  <div align="center"><img src="./Operating System.assets/image-20211207213405548.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211207213405548.png"/></div>
 
 ### 6.3.文件系统的实现
 
@@ -3867,7 +3867,7 @@ $$
 
   ​	在内存中缓存磁盘上的少部分盘块，下图来自 PPT，实在不知道咋总结了:disappointed_relieved:。
 
-  <div align="center"><img src="./Operating System.assets/image-20211207220806012.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211207220806012.png"/></div>
 
 ### 6.4.文件系统的保护
 
@@ -3929,7 +3929,7 @@ $$
 
 ### 6.5.EXT2 文件系统
 
-<div align="center"><img src="./Operating System.assets/3790176-4ece675e15d09e8e.jpeg"/>
+<div align="center"><img src="./Operating System.assets/3790176-4ece675e15d09e8e.jpeg"/></div>
 
 + 整个硬盘的第 $1$ 个扇区存储着**主引导记录**（MBR），其余扇区被划分到 $4$ 个基本分区。
 + 分区中第一个扇区为**引导扇区**（Boot Sector），引导扇区的大小是确定的，用来存储磁盘分区信息和启动信息，任何文件系统都不能使用引导扇区，引导扇区之后才是 EXT2 文件系统的开始。
@@ -3962,13 +3962,13 @@ $$
 
   维基百科图：
 
-  <div align="center"><img src="./Operating System.assets/image-20211208111917437.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211208111917437.png"/></div>
 
   > 下面无情复制 PPT，未知是否会考到:crayon:
 
 + 引导区：
 
-  <div align="center"><img src="./Operating System.assets/image-20211208112159457.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211208112159457.png"/></div>
 
 + 文件分配表 FAT $1$：
 
@@ -3994,7 +3994,7 @@ $$
 
 + 后面两个非常恶心，就不做笔记了:no_good:，直接进入**文件访问过程**：
 
-  <div align="center"><img src="./Operating System.assets/image-20211208115014073.png"/>
+  <div align="center"><img src="./Operating System.assets/image-20211208115014073.png"/></div>
 
   目的：
 
