@@ -621,7 +621,7 @@ $$
     
     + 若进程就绪队列能够接纳新进程，则将新进程插入就绪队列，等待被调度运行。
     
-    > <div align="center"><img src=".\Operating System.assets\image-20211213151050037.png"/></div>
+    > <div align="center"><img src="./Operating System.assets/image-20211213151050037.png"/></div>
   
 + 进程的终止:
   
@@ -945,7 +945,7 @@ $$
       >
       > 管道只能采用**半双工通信**，即某一时刻只能单向传输，「双向数据传输」是错误的说法。要实现父子进程双方互动通信，需要定义两个管道。
       >
-      > <div align="center"><img src=".\Operating System.assets\image-20211211224246093.png"/></div>
+      > <div align="center"><img src="./Operating System.assets/image-20211211224246093.png"/></div>
 
 ### 2.7.异常控制流
 
@@ -2870,9 +2870,9 @@ $$
 > ​	存在**外部碎片**（王道说是**没有内部碎片**的），有较大的资源浪费。
 >
 > 分段的题目：
-> <div align="center"><img src=".\Operating System.assets\image-20211214095011776.png"/></div>
+> <div align="center"><img src="./Operating System.assets/image-20211214095011776.png"/></div>
 > 
-> <div align="center"><img src=".\Operating System.assets\image_71.png"/></div>
+> <div align="center"><img src="./Operating System.assets/image_71.png"/></div>
 > 
 
 #### 4.3.2.基本分页存储管理方式
@@ -3143,7 +3143,7 @@ $$
     > + 虚存的**实际容量** $\leq$ **内存**容量和**外存**容量之和，这是**硬件的硬性条件**规定的。若虚存的实际容量超过了这个容量，则没有相应的空间来供虚存使用。
     > + 虚存的**最大容量** $\leq$ 计算机的**地址位数**能容纳的最大容量。假设地址是 $32$ 位的，按字节编址，一个地址代表 $1 \mathrm{~B}$ 存储空间，则虚存的最大容量 $\leqslant 4 \mathrm{~GB}\left(2^{32} \mathrm{~B}\right)$。这是因为若虚存的最大容量超过 $4 \mathrm{~GB}$，则 $32$ 位的地址，超过限制的空间没有意义。
     >
-    > <div align="center"><img src=".\Operating System.assets\image-20211214113424964.png"/></div>
+    > <div align="center"><img src="./Operating System.assets/image-20211214113424964.png"/></div>
 
 #### 4.4.2.请求分页管理方式
 
@@ -3866,7 +3866,7 @@ $$
 
     > 一般来说，寻道时间因为要移动磁臂，所以占用时间最长。
     >
-    > <div align="center"><img src=".\Operating System.assets\image-20211214211950929.png"/></div>
+    > <div align="center"><img src="./Operating System.assets/image-20211214211950929.png"/></div>
 
 #### 5.4.2.磁盘调度算法
 
@@ -4340,7 +4340,7 @@ $$
 
   ​	读出文件 `\aa\bb\ccc.dat `的内容：
 
-  > 查找 `aa` 过程用<font color=#549c05>绿色</font>框线标出，查找 `bb` 用**<font color=#0f4fad>蓝色</font>**框线标出，查找 `ccc.dat` 用**<font color=#c1cc03>黄色</font>**框线标出。
+  > 查找 `aa` 过程用<font color=#549c05>绿色</font>框线标出，查找 `bb` 用<font color=#0f4fad>蓝色</font>框线标出，查找 `ccc.dat` 用<font color=#c1cc03>黄色</font>框线标出。
 
   1. 「根目录」不用通过 FAT 表找到，应该是可以知道其簇位置的。然后查簇中的目录项，找到含目录名 = `aa` 的目录项。
   2. `aa` 目录项中查出该**目录文件**的**首簇号** = $2$。
