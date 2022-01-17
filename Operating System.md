@@ -1,5 +1,4 @@
 # 操作系统（Operating System）
-
 $$
 \large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}\large\scr A\cal{ilan} \scr X \cal{ier}
 $$
@@ -2394,10 +2393,9 @@ $$
     ​	设 $\operatorname{Request}_{i}$ 是进程 $P_{i}$ 的请求向量，$\operatorname{Request}_{i}[j]=K$ 表示进程 $P_{i}$ 需要 $j$ 类资源 $K$ 个。当 $P_{i}$ 发出资源请求后，系统按下述步骤进行检查:
 
     1. 若 $\operatorname{Request}_{i}[j] \leq \operatorname{Need}[i, j]$，则转向步骤 $2$，否则认为出错，因为它所需要的资源数已超过它所宣布的**最大值**。
-
     2. 若 $\operatorname{Request}_{i}[j] \leq \operatorname{Available} [j]$，则转向步骤 $3$，否则表示**尚无足够资源**，$P_{{i}}$ 等待。
+    2. 系统**试探**着把资源分配给进程 $P_{{i}}$，并修改下面数据结构中的数值。
 
-     系统**试探**着把资源分配给进程 $P_{{i}}$，并修改下面数据结构中的数值。
     $$
        \begin{aligned}
        & \operatorname{Available}=\operatorname{Available}-\operatorname{Request}_i[j]\\
@@ -2405,9 +2403,9 @@ $$
        & \operatorname{Need}[i,j]=\operatorname{Need}[i,j]-\operatorname{Request}_i[j]
        \end{aligned}
     $$
-
+    
     4. 系统执行**安全性算法**，检查此次资源分配后，系统是否处于**安全状态**。若安全，才正式将资源分配给进程 $P_{{i}}$，以完成本次分配；否则，将本次的试探分配作废，恢复原来的资源分配状态，让进程 $P_{{i}}$ **等待**。
-
+    
   + 安全性算法（时间复杂度 $\mathcal{O}(mn^2)$）：
 
     ​	设置工作向量 $\operatorname{Work} = \operatorname{Available}$，有 $m$ 个元素，表示系统中的剩余可用资源数目。
@@ -2416,7 +2414,7 @@ $$
     2. 从 $\operatorname{Need}$ 矩阵中找出符合下面条件的行：
        + 该行对应的进程**不在安全序列**中。
        + 该行小于等于 $\operatorname{Work}$ 向量（即每一列都小于），找到后，把对应的进程加入安全序列；若找不到，则执行步骤 $4$。
-        设步骤 $2$ 中找到的进程 ${P}_{i}$ 进入安全序列后，可顺利执行直至完成，并释放分配给它的资源，此时执行 $\operatorname{Work} = \operatorname{Work} + \operatorname{Allocation}[i]$，其中 $\operatorname{Allocation}[i]$ 表示进程 ${P}_{i}$ 代表的在 $\operatorname{Allocation}[i]$ 矩阵中对应的行，返回步骤 $2$。
+    3. 设步骤 $2$ 中找到的进程 ${P}_{i}$ 进入安全序列后，可顺利执行直至完成，并释放分配给它的资源，此时执行 $\operatorname{Work} = \operatorname{Work} + \operatorname{Allocation}[i]$，其中 $\operatorname{Allocation}[i]$ 表示进程 ${P}_{i}$ 代表的在 $\operatorname{Allocation}[i]$ 矩阵中对应的行，返回步骤 $2$。
     4. 若 $3$ 中安全序列中**已有所有进程**，则系统处于**安全状态**，若未找到满足条件的进程，则系统处于不安全状态。
 
     伪代码：
