@@ -27,6 +27,6 @@
 
 + 笔记源码 `.md` 文件最好配合 Typora 使用，其引用的文件夹在 `Operating System.assets` 下。
 
-+ 不想自己编写只想看笔记，可以只下载 release 中的 pdf。
++ 不想自己编写只想看笔记，可以只下载 release 中的 pdf，或者去 [我的博客](https://ailanxier.top/Operating_System) 查看。
 
   > pdf 导出的主题是自定义的，比较难调，可以参考 [Typora 的仿 Latex 主题](https://github.com/Keldos-Li/typora-latex-theme)
